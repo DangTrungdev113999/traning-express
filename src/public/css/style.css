@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
+}
+
+.lds-read-more {
+  display: none;
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+.lds-read-more div {
+  display: inline-block;
+  position: absolute;
+  left: 6px;
+  width: 13px;
+  background: #ffc107;
+  animation: lds-read-more 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+.lds-read-more div:nth-child(1) {
+  left: 6px;
+  animation-delay: -0.24s;
+}
+.lds-read-more div:nth-child(2) {
+  left: 26px;
+  animation-delay: -0.12s;
+}
+.lds-read-more div:nth-child(3) {
+  left: 45px;
+  animation-delay: 0;
+}
+@keyframes lds-read-more {
+  0% {
+    top: 6px;
+    height: 51px;
+  }
+  50%, 100% {
+    top: 19px;
+    height: 26px;
+  }
+}
