@@ -4,7 +4,7 @@ function getDataFromMockAPI() {
     $("#read-more").css("display", "none");
 
     setTimeout(() => {
-      $.get("http://192.168.1.18:3000/post/2", cards => {
+      $.get("http://5d35c5105b83cd0014d0b359.mockapi.io/api/v1/product", cards => {
 
         let numberOfCardCurrent = $(".card-api").length;
         let numberOfCardNeedTaken = numberOfCardCurrent + 4
