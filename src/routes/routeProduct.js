@@ -1,24 +1,23 @@
 const express = require("express");
 const router = express.Router();
 const data = require("./../class/products");
+const path = require("path");
 
-router.get("/", (req, res, next) => {
-  res.send("product list")
-})
+router.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "../views/home.html"));
+});
 
-// router.get("/:num1/:num2", (req, res, next) => {
-//   console.log(+req.params.num1 + +req.params.num2)  
-//   res.send("product 1")
-// })
+router.get("/download/image", (req, res) => {
+  res.download(path.join(__dirname, "public/images/image.jpg"))
+});
 
-router.get("/data:page", (req, res, next) => {
+router.get("/data/:page", (req, res, next) => {
   let page = +req.params.page;
-  console.log(req.params.page);
-  let perPage = 10;
+  let perPage = 4;
   let start =  (page-1)*perPage;
   let end = page * perPage;
-  res.send(data.slice(start,end));
-})
+  res.json(data.slice(start,end));
+});
 
 
 

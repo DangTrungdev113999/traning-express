@@ -4,10 +4,9 @@ function getDataFromMockAPI() {
     $("#read-more").css("display", "none");
 
     setTimeout(() => {
-      $.get("http://5d35c5105b83cd0014d0b359.mockapi.io/api/v1/product", cards => {
+      $.get("/product/data/1", cards => {
 
         let numberOfCardCurrent = $(".card-api").length;
-        let numberOfCardNeedTaken = numberOfCardCurrent + 4
 
         if (numberOfCardCurrent == cards.length) {
           $(".lds-read-more").css("display", "none");
@@ -15,7 +14,7 @@ function getDataFromMockAPI() {
           alertify.notify("Đã hết dữ liệu", "success", 6);
           return;
         }
-        cards.slice(numberOfCardCurrent, numberOfCardNeedTaken).forEach(card => {
+        cards.forEach(card => {
           $(".lds-read-more").css("display", "none");
           $("#read-more").css("display", "inline-block");
           let cardTempale = `
