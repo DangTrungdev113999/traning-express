@@ -1,14 +1,16 @@
 function getDataFromMockAPI() {
+  let page = 1;
   $("#read-more").on("click", () => {
+    page++;
+    console.log(page);
     $(".lds-read-more").css("display", "inline-block");
     $("#read-more").css("display", "none");
 
     setTimeout(() => {
-      $.get("/product/data/1", cards => {
-
+      $.get(`/product/data/${page}`, cards => {
         let numberOfCardCurrent = $(".card-api").length;
 
-        if (numberOfCardCurrent == cards.length) {
+        if (!cards.length) {
           $(".lds-read-more").css("display", "none");
           $("#read-more").css("display", "inline-block");
           alertify.notify("Đã hết dữ liệu", "success", 6);
